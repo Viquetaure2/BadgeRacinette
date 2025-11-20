@@ -31,7 +31,7 @@ public class VueTableauHonneur extends Vue {
 	public void activerControles()
 	{
 		super.activerControles();
-		BadgeRacinette BadgeRacinette = new BadgeRacinette();
+		BadgeRacinette BadgeRacinette = new BadgeRacinette().ALaRacinetteBrune();
 		
 		AnchorPane espaceTravail = (AnchorPane)lookup("#espace-travail");
 		espaceTravail.getChildren().add(BadgeRacinette);

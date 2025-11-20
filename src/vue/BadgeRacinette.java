@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class BadgeRacinette extends AnchorPane{
+	public enum COULEUR_DAUPHIN{BLEU, ROSE};
+	public enum COULEUR{ROUGE, BLEU, JAUNE, NOIR};
 
 	public BadgeRacinette() {
 		//AnchorPane this = new AnchorPane();
@@ -17,25 +19,13 @@ public class BadgeRacinette extends AnchorPane{
 		ecusson.setImage(new Image("vue/badge/armoirie.png"));
 		this.getChildren().add(ecusson);
 		
-		ImageView vagues = new ImageView();
-		vagues.setImage(new Image("vue/badge/vagues-rondes.png"));
-		vagues.setScaleX(0.2);
-		vagues.setScaleY(0.2);
-		vagues.setLayoutX(54);
-		vagues.setLayoutY(240);
+		this.setVagues();
 		this.getChildren().add(vagues);
 		
-		ImageView dauphinRose = new ImageView();
-		dauphinRose.setImage(new Image("vue/badge/dauphin-rose.png"));
-		dauphinRose.setLayoutX(40);
-		dauphinRose.setLayoutY(80);
+		this.setDauphinRose();
 		this.getChildren().add(dauphinRose);
 		
-		ImageView dauphinBleu = new ImageView();
-		dauphinBleu.setImage(new Image("vue/badge/dauphin-bleu.png"));
-		dauphinBleu.setLayoutX(160);
-		dauphinBleu.setLayoutY(80);
-		dauphinBleu.setScaleX(-1);
+		this.setDauphinBleu(COULEUR_DAUPHIN.BLEU);
 		this.getChildren().add(dauphinBleu);
 		
 		Label motto = new Label();
@@ -46,4 +36,36 @@ public class BadgeRacinette extends AnchorPane{
 		this.getChildren().add(motto);
 	}
 	
+	protected ImageView dauphinBleu = new ImageView();
+	public void setDauphinBleu(COULEUR_DAUPHIN couleur) {
+		dauphinBleu.setImage(new Image("vue/badge/dauphin-bleu.png"));
+		dauphinBleu.setLayoutX(160);
+		dauphinBleu.setLayoutY(80);
+		dauphinBleu.setScaleX(-1);
+	}
+	
+	protected ImageView dauphinRose = new ImageView();
+	public void setDauphinRose() {
+		dauphinRose.setImage(new Image("vue/badge/dauphin-rose.png"));
+		dauphinRose.setLayoutX(40);
+		dauphinRose.setLayoutY(80);
+	}
+	
+	protected ImageView vagues = new ImageView();
+	public void setVagues() {
+		vagues.setImage(new Image("vue/badge/vagues-rondes.png"));
+		vagues.setScaleX(0.2);
+		vagues.setScaleY(0.2);
+		vagues.setLayoutX(54);
+		vagues.setLayoutY(240);
+	}
+	
+	public void setCouleur(COULEUR couleur) {
+		this.setStyle("-fx-background-color:red");
+	}
+	
+	public BadgeRacinette ALaRacinetteBrune() {
+		this.setDauphinBleu(COULEUR_DAUPHIN.ROSE);
+		return this;
+	}
 }
